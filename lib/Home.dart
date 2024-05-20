@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'event_detail_page.dart'; // Make sure this import is correct
 import 'create_event_1.dart';
+import 'ProfileView.dart';
+import 'main.dart';
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -21,10 +23,21 @@ class _MyHomePageState extends State<MyHomePage> {
       // Navigate to profile view page
       Navigator.push(
         context ,
+        MaterialPageRoute(builder: (context) => MyHomePage()),
+      );
+    } else if(index == 1){
+      Navigator.push(
+        context ,
         MaterialPageRoute(builder: (context) => CreatePropertyPage()),
       );
-    } else {
-      // Handle other navigation items
+    }
+    else
+    { Navigator.push(
+      context ,
+      MaterialPageRoute(builder: (context) => SignUpScreen()),
+    );
+
+
     }
   }
   @override
@@ -109,10 +122,10 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex:_currentIndex,
         onTap: (index) => _onItemTapped(context, index),
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'register'),
-          BottomNavigationBarItem(icon: Icon(Icons.event), label: 'Events'),
-          BottomNavigationBarItem(icon: Icon(Icons.event), label: 'profile'),
-          BottomNavigationBarItem(icon: Icon(Icons.event), label: 'profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.event), label: 'Event'),
+          BottomNavigationBarItem(icon: Icon(Icons.event), label: 'Register'),
+
           // Add more navigation items here
         ],
       ),

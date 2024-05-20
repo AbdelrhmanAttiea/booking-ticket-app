@@ -29,7 +29,7 @@ class _CreatePropertyPageState extends State<CreatePropertyPage> {
   final TextEditingController _propertyAddressController = TextEditingController();
   final TextEditingController _neighborhoodController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
-  late File _image;
+  late File _image= File('');
 
 
   Future<void> _uploadImage() async {
@@ -139,7 +139,7 @@ class _CreatePropertyPageState extends State<CreatePropertyPage> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                child: Text('NEXT'),
+                child: Text('upload'),
                 onPressed: _createEvent,
 
               ),
@@ -149,7 +149,7 @@ class _CreatePropertyPageState extends State<CreatePropertyPage> {
                   {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => CreatePropertyPage()),
+                      MaterialPageRoute(builder: (context) => CreateEventPart2App ()),
                     );
 
                   }

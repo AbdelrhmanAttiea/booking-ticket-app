@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
         child: ListView(
           children: <Widget>[
             SizedBox(height: 20),
-            Center(child: Image.asset('assets/busuu_logo.png')), // Replace with your asset image
+            Center(child: Image.asset('assets/booking.png')), // Replace with your asset image
             SizedBox(height: 48),
             Center(
               child: Text(

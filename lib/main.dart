@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'Login_test.dart';
+import 'Login_test.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -106,8 +107,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
               onTap: _pickImage,
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: _imageFile != File('') ? FileImage(_imageFile) : null,
-                child: _imageFile == File('') ? Icon(Icons.camera_alt, size: 50) : null,
+                backgroundColor: Colors.transparent, // to make sure background is transparent
+                child: ClipOval(
+                  child: SizedBox(
+                    width: 100, // double the radius to cover the circle
+                    height: 100,
+                    child: _imageFile != null && _imageFile != File('')
+                        ? Image.file(_imageFile, fit: BoxFit.cover)
+                        : Icon(Icons.camera_alt, size: 50, color: Colors.white), // Added color
+                  ),
+                ),
               ),
             ),
             SizedBox(height: 24.0),
@@ -156,9 +165,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     text: 'Privacy Policy',
                     style: TextStyle(color: Colors.blue),
                   ),
+
                 ],
               ),
               textAlign: TextAlign.center,
+            ),
+            ElevatedButton(
+                child: Text('sign in'),
+                onPressed: ()
+                {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage ()),
+                  );
+
+                }
+
             ),
           ],
         ),
